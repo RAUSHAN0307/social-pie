@@ -1,4 +1,4 @@
-# 📱 Social Pie - A Complete Social Media Backend
+# 📱 Social Pie - A Social Media Backend
 
 ![Java](https://img.shields.io/badge/Java-21-blue)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2-green)
