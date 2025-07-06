@@ -50,7 +50,6 @@ public class AuthController {
         if (file != null && !file.isEmpty()) {
             profileUrl = uploadToCloudService.uploadImage(file);
         }
-        System.out.println("Password from request: " + request.getPassword());
 
         // setting user
         User user = new User();
