@@ -75,6 +75,8 @@ A feature-rich and scalable social media backend built using modern **Spring Boo
 ```
 
 
+
+
 ## 💻 Tech Stack
 
 | Layer           | Technology / Approach         |
@@ -89,6 +91,8 @@ A feature-rich and scalable social media backend built using modern **Spring Boo
 | API Documentation| Swagger (Springdoc OpenAPI)   |
 | API Testing      | Postman                       |
 | Build Tool       | Maven                         |
+
+
 
 
 
@@ -125,6 +129,8 @@ cloudinary.cloud_name=your_cloud_name
 cloudinary.api_key=your_api_key
 cloudinary.api_secret=your_api_secret
 ```
+
+
 
 ### Run the Application
 
@@ -201,6 +207,7 @@ Run the Spring Boot application using the Maven wrapper:
 
 
 
+
 ## 📘 Future Enhancements
 
 Here are some planned improvements and features under active or future development:
@@ -225,6 +232,7 @@ Here are some planned improvements and features under active or future developme
 
 - 📄 **Pagination for Large Datasets**  
   Efficient API responses for posts, comments, reels, followers, etc., using Spring Data JPA's pagination support.
+
 
 
 
