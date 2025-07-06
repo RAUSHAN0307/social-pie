@@ -42,7 +42,7 @@ All functionalities are exposed via REST APIs, fully tested using Postman, and d
 - Like/unlike and delete stories
 
 ### 💬 Chat System
-- One-to-one real-time chats
+- One-to-one chats
 - image support in chats
 
 ### 📩 Messages
