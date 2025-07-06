@@ -129,18 +129,69 @@ Run the Spring Boot application using the Maven wrapper:
 ./mvnw spring-boot:run
 ```
 
-## 📸 Screenshots
+<details>
+<summary><b>🔐 Auth Controller</b></summary>
 
-### 🔹 Swagger API Documentation
+![Auth Controller](screenshots/auth-controller.png)
 
-### 🔹 Create Post Endpoint
-![Create Post](./screenshots/post-api.png)
+</details>
 
-### 🔹 Reels API
-![Reels](./screenshots/reels-endpoint.png)
+<details>
+<summary><b>💬 Chat API</b></summary>
 
-### 🔹 Notifications in Swagger
-![Notifications](./screenshots/notifications-api.png)
+![Chat API](screenshots/chat-api.png)
+
+</details>
+
+<details>
+<summary><b>📝 Comment API</b></summary>
+
+![Comment API](screenshots/comment-api.png)
+
+</details>
+
+<details>
+<summary><b>✉️ Message API</b></summary>
+
+![Message API](screenshots/message-api.png)
+
+</details>
+
+<details>
+<summary><b>🔔 Notification API</b></summary>
+
+![Notification API](screenshots/notification-api.png)
+
+</details>
+
+<details>
+<summary><b>📰 Post API</b></summary>
+
+![Post API](screenshots/post-api.png)
+
+</details>
+
+<details>
+<summary><b>🎞️ Reels API</b></summary>
+
+![Reels API](screenshots/reels-api.png)
+
+</details>
+
+<details>
+<summary><b>📚 Story API</b></summary>
+
+![Story API](screenshots/story-api.png)
+
+</details>
+
+<details>
+<summary><b>👤 User API</b></summary>
+
+![User API](screenshots/user-api.png)
+
+</details>
+
 
 
 
