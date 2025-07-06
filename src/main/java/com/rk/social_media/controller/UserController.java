@@ -4,13 +4,17 @@ import com.rk.social_media.Exception.UserException;
 import com.rk.social_media.dto.UserDto;
 import com.rk.social_media.dto.UserProfileDto;
 import com.rk.social_media.entity.User;
+import com.rk.social_media.request.UserUpdateRequest;
 import com.rk.social_media.service.UserService;
 import com.rk.social_media.utility.UserMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,10 +69,12 @@ public class UserController {
     }
 
     @Operation(summary = "Update your user profile")
-    @PutMapping("/update")
-    public UserDto updateUser(@RequestHeader("Authorization") String jwt , @RequestBody User users) throws UserException {
+    @PutMapping(value = "/update" , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public UserDto updateUser(@RequestHeader("Authorization") String jwt ,
+                              @ModelAttribute UserUpdateRequest request,
+                              @RequestPart(value = "file" , required = false)MultipartFile file) throws UserException, IOException {
         User user = userService.findUserByJwt(jwt);
-        User updated = userService.updateUser(users , user.getId());
+        User updated = userService.updateUser(request,file, user.getId());
         return UserMapper.convertToDTO(updated);
     }
 

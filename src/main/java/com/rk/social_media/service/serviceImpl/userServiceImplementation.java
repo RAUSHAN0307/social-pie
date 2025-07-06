@@ -5,11 +5,15 @@ import com.rk.social_media.config.JwtProvider;
 import com.rk.social_media.dto.UserDto;
 import com.rk.social_media.entity.User;
 import com.rk.social_media.repo.UserRepo;
+import com.rk.social_media.request.UserUpdateRequest;
+import com.rk.social_media.service.UploadToCloudService;
 import com.rk.social_media.service.UserService;
 import com.rk.social_media.utility.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,11 +22,9 @@ import java.util.Optional;
 public class userServiceImplementation implements UserService {
     @Autowired
     UserRepo userRepo;
- //   @Override
-//    public User registerUser(User user) {
-//
-//        return userRepo.save(user);
-//    }
+
+    @Autowired
+    UploadToCloudService uploadToCloudService;
 
     @Override
     public User findUserById(Integer userId) throws UserException {
@@ -82,14 +84,21 @@ public class userServiceImplementation implements UserService {
 
 
     @Override
-    public User updateUser(User user , Integer id) throws UserException {
+    public User updateUser(UserUpdateRequest request, MultipartFile file, Integer id) throws UserException, IOException {
         Optional<User> oldUser = userRepo.findById(id);
         if(oldUser.isEmpty()) throw new UserException("user is not exist with id " + id);
-        if(user.getFirstName() != null) oldUser.get().setFirstName(user.getFirstName());
-        if(user.getLastName() != null) oldUser.get().setLastName(user.getLastName());
-        if(user.getProfilePic() != null) oldUser.get().setProfilePic(user.getProfilePic());
-        if(user.getGender() != null) oldUser.get().setGender(user.getGender());
-        if(user.getEmail() != null) oldUser.get().setEmail(user.getEmail());
+
+        // update profile image
+        String imageUrl = null;
+        if(file != null && !file.isEmpty()){
+            imageUrl = uploadToCloudService.uploadImage(file);
+        }
+
+        if(request.getFirstName() != null) oldUser.get().setFirstName(request.getFirstName());
+        if(request.getLastName() != null) oldUser.get().setLastName(request.getLastName());
+        if(imageUrl != null) oldUser.get().setProfilePic(imageUrl);
+        if(request.getGender() != null) oldUser.get().setGender(request.getGender());
+        if(request.getEmail() != null) oldUser.get().setEmail(request.getEmail());
         userRepo.save(oldUser.get());
         return oldUser.get();
     }
