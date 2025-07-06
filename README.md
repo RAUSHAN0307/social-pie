@@ -58,7 +58,7 @@ All functionalities are exposed via REST APIs, fully tested using Postman, and d
 ### ☁️ Cloudinary Integration
 - Secure cloud storage for images/videos
 
-
+---
 
 ## 📂 Project Structure
 
@@ -79,7 +79,7 @@ All functionalities are exposed via REST APIs, fully tested using Postman, and d
 ```
 
 
-
+---
 
 ## 💻 Tech Stack
 
@@ -98,7 +98,7 @@ All functionalities are exposed via REST APIs, fully tested using Postman, and d
 
 
 
-
+---
 
 ## 📦 Installation (Local Setup)
 
@@ -143,6 +143,8 @@ Run the Spring Boot application using the Maven wrapper:
 ```bash
 ./mvnw spring-boot:run
 ```
+---
+## API DOCUMENTATION
 
 <details>
 <summary><b>🔐 Auth Controller</b></summary>
@@ -209,6 +211,7 @@ Run the Spring Boot application using the Maven wrapper:
 
 
 
+---
 
 
 
@@ -238,7 +241,7 @@ Here are some planned improvements and features under active or future developme
   Efficient API responses for posts, comments, reels, followers, etc., using Spring Data JPA's pagination support.
 
 
-
+---
 
 ## 📧 Author
 
