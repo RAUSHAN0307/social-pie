@@ -96,7 +96,7 @@ A feature-rich and scalable social media backend built using modern **Spring Boo
 
 ### Clone the Repository
 ```bash
-git clone https://github.com/your-username/social-pie.git
+git clone https://github.com/RAUSHAN0307/social-pie.git
 cd social-pie
 ```
 ### Configure MySQL Database
