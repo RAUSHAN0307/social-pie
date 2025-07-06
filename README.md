@@ -106,8 +106,13 @@ cd social-pie
 2. **Update your database credentials** in the `src/main/resources/application.properties` file:
 
 ```properties
-spring.datasource.username=your_mysql_user
-spring.datasource.password=your_mysql_password
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.url=jdbc:mysql://localhost:3306/your_database_name
+spring.datasource.username=your_username
+spring.datasource.password=you_password
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.show-sql = true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 ```
 ### Cloudinary Setup
 
