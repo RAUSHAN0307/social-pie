@@ -1,4 +1,4 @@
-# 📱 Social Pie - A Complete Social Media Backend
+# 📱 Social Pie - A Social Media Backend
 
 ![Java](https://img.shields.io/badge/Java-21-blue)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2-green)
@@ -6,7 +6,11 @@
 ![JWT](https://img.shields.io/badge/Auth-JWT-orange)
 ![Build](https://img.shields.io/badge/Build-Maven-blue)
 
-A feature-rich and scalable social media backend built using modern **Spring Boot architecture**, implementing core features like posts, comments, reels, chat, likes, notifications, stories, and **JWT-based authentication**.
+social-pie is a backend system for a social media platform, built using Java and Spring Boot, that mimics the core functionalities of modern social apps like Instagram. The project is structured with clean code practices, DTO usage, exception handling, layered architecture (Controller → Service → Repository), and uses JWT for secure authentication.
+
+It provides features like user management, post creation and interaction, reels (short video sharing), stories, commenting system, chat and messaging, and a notification system. It supports follower/following relationships, profile viewing , and Cloudinary integration for media uploads.
+
+All functionalities are exposed via REST APIs, fully tested using Postman, and documented using Swagger/OpenAPI. The project also includes modular utilities and DTO mappers to prevent overexposing internal data.
 
 ---
 
@@ -54,7 +58,7 @@ A feature-rich and scalable social media backend built using modern **Spring Boo
 ### ☁️ Cloudinary Integration
 - Secure cloud storage for images/videos
 
-
+---
 
 ## 📂 Project Structure
 
@@ -75,7 +79,7 @@ A feature-rich and scalable social media backend built using modern **Spring Boo
 ```
 
 
-
+---
 
 ## 💻 Tech Stack
 
@@ -94,7 +98,7 @@ A feature-rich and scalable social media backend built using modern **Spring Boo
 
 
 
-
+---
 
 ## 📦 Installation (Local Setup)
 
@@ -139,6 +143,8 @@ Run the Spring Boot application using the Maven wrapper:
 ```bash
 ./mvnw spring-boot:run
 ```
+---
+## API DOCUMENTATION
 
 <details>
 <summary><b>🔐 Auth Controller</b></summary>
@@ -205,6 +211,7 @@ Run the Spring Boot application using the Maven wrapper:
 
 
 
+---
 
 
 
@@ -234,7 +241,7 @@ Here are some planned improvements and features under active or future developme
   Efficient API responses for posts, comments, reels, followers, etc., using Spring Data JPA's pagination support.
 
 
-
+---
 
 ## 📧 Author
 
