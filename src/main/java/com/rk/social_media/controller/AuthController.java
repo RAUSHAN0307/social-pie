@@ -41,7 +41,7 @@ public class AuthController {
     @Operation(summary = "Register a new user")
     @PostMapping(value = "/register" , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public AuthResponse CreateUser(@ModelAttribute  RegisterRequest request,
-                                   @RequestParam(value = "file" , required = false) MultipartFile file) throws Exception {
+                                   @RequestPart(value = "file" , required = false) MultipartFile file) throws Exception {
 
         User isExist = userRepo.findByEmail(request.getEmail());
         if(isExist != null) throw new Exception("email is already registered");
