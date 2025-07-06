@@ -129,12 +129,19 @@ Run the Spring Boot application using the Maven wrapper:
 ./mvnw spring-boot:run
 ```
 
-## 📘 API Documentation (Swagger)
+## 📸 Screenshots
 
-![Swagger UI](./screenshots/swagger-ui.png)
+### 🔹 Swagger API Documentation
 
-Access your API here:  
-👉 `http://localhost:8080/swagger-ui/index.html`
+### 🔹 Create Post Endpoint
+![Create Post](./screenshots/post-api.png)
+
+### 🔹 Reels API
+![Reels](./screenshots/reels-endpoint.png)
+
+### 🔹 Notifications in Swagger
+![Notifications](./screenshots/notifications-api.png)
+
 
 
 
