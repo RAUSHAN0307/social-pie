@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -33,7 +34,7 @@ public class AuthController {
     private UserRepo userRepo;
 
     @Autowired
-    CustomUserDetailsService customUserDetailsService;
+    private AuthenticationManager authenticationManager;
 
     @Autowired
     UploadToCloudService uploadToCloudService;
@@ -59,10 +60,15 @@ public class AuthController {
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setProfilePic(profileUrl);
-        User savedUser = userRepo.save(user);
+        userRepo.save(user);
 
         // authentication/tokenGeneration
-        Authentication authentication = new UsernamePasswordAuthenticationToken(savedUser.getEmail() , savedUser.getPassword());
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getEmail(),
+                        request.getPassword()
+                )
+        );
         String token = JwtProvider.generateToken(authentication);
         AuthResponse response = new AuthResponse(token , "registered successfully");
         return response;
@@ -73,17 +79,17 @@ public class AuthController {
     @Operation(summary = "Login with email and password")
     @PostMapping("/signin")
     public AuthResponse signin(@RequestBody LoginRequest loginRequest) throws Exception {
-        Authentication authentication = authentication(loginRequest.getEmail() , loginRequest.getPassword());
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        loginRequest.getEmail(),
+                        loginRequest.getPassword()
+                )
+        );
         String token = JwtProvider.generateToken(authentication);
         AuthResponse response = new AuthResponse(token , "login successfully");
         return response;
     }
-    private Authentication authentication(String email , String password) throws Exception {
-        UserDetails userDetails = customUserDetailsService.loadUserByUsername(email);
-        if (userDetails == null) throw new Exception("invalid username");
-        if(!passwordEncoder.matches(password , userDetails.getPassword())) throw new Exception("password not matched");
-        return new UsernamePasswordAuthenticationToken(email , null , userDetails.getAuthorities());
-    }
+
 }
 
 // if you are implementing frontend then
