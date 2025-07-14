@@ -26,7 +26,7 @@ public class GlobalException {
         errorDetails.setMessage(e.getMessage());
         errorDetails.setLocalDateTime(LocalDateTime.now());
         errorDetails.setError(req.getDescription(false));
-        return new ResponseEntity<>(errorDetails , HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorDetails , HttpStatus.NOT_FOUND);
     }
 
 
@@ -36,7 +36,7 @@ public class GlobalException {
         errorDetails.setMessage(e.getMessage());
         errorDetails.setLocalDateTime(LocalDateTime.now());
         errorDetails.setError(req.getDescription(false));
-        return new ResponseEntity<>(errorDetails , HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorDetails , HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(CommentException.class)
@@ -45,7 +45,7 @@ public class GlobalException {
         errorDetails.setMessage(e.getMessage());
         errorDetails.setLocalDateTime(LocalDateTime.now());
         errorDetails.setError(req.getDescription(false));
-        return new ResponseEntity<>(errorDetails , HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorDetails , HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(MessageException.class)
@@ -63,7 +63,7 @@ public class GlobalException {
         errorDetails.setMessage(e.getMessage());
         errorDetails.setLocalDateTime(LocalDateTime.now());
         errorDetails.setError(req.getDescription(false));
-        return new ResponseEntity<>(errorDetails , HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorDetails , HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(PostException.class)
@@ -72,7 +72,7 @@ public class GlobalException {
         errorDetails.setMessage(e.getMessage());
         errorDetails.setLocalDateTime(LocalDateTime.now());
         errorDetails.setError(req.getDescription(false));
-        return new ResponseEntity<>(errorDetails , HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorDetails , HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(ReelException.class)
@@ -81,7 +81,7 @@ public class GlobalException {
         errorDetails.setMessage(e.getMessage());
         errorDetails.setLocalDateTime(LocalDateTime.now());
         errorDetails.setError(req.getDescription(false));
-        return new ResponseEntity<>(errorDetails , HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorDetails , HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(StoryException.class)
@@ -90,7 +90,7 @@ public class GlobalException {
         errorDetails.setMessage(e.getMessage());
         errorDetails.setLocalDateTime(LocalDateTime.now());
         errorDetails.setError(req.getDescription(false));
-        return new ResponseEntity<>(errorDetails , HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorDetails , HttpStatus.NOT_FOUND);
     }
 
 
