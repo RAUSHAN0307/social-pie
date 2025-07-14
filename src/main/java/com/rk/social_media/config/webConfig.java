@@ -36,6 +36,7 @@ public class webConfig {
         return http.build();
     }
 
+    //**********
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
@@ -44,6 +45,7 @@ public class webConfig {
         return provider;
     }
 
+    //**************
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();

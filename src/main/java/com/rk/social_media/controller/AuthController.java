@@ -63,6 +63,7 @@ public class AuthController {
         userRepo.save(user);
 
         // authentication/tokenGeneration
+        //********
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
@@ -79,6 +80,7 @@ public class AuthController {
     @Operation(summary = "Login with email and password")
     @PostMapping("/signin")
     public AuthResponse signin(@RequestBody LoginRequest loginRequest) throws Exception {
+        // ***************
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginRequest.getEmail(),
