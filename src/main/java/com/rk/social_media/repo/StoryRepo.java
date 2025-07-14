@@ -13,4 +13,8 @@ public interface StoryRepo extends JpaRepository<Story , Integer> {
     List<Story> findByUserId(Integer id);
 
     List<Story> findByTimeStampsBeforeAndIsDeletedFalse(LocalDateTime time);
+    void deleteAllByIsDeletedTrueAndTimeStampsBefore(LocalDateTime cutoff);
+
+
+
 }

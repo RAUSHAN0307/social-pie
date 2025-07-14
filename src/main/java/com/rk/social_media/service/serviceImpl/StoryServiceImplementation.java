@@ -127,5 +127,12 @@ public class StoryServiceImplementation implements StoryService {
         storyRepo.saveAll(expired);
     }
 
+    @Scheduled(cron = "0 0 3 * * *") // Every day at 3 AM
+public void permanentlyDeleteOldStories() {
+        LocalDateTime cutoff = LocalDateTime.now().minusDays(30); // Keep 30 days of deleted data
+        storyRepo.deleteAllByIsDeletedTrueAndTimeStampsBefore(cutoff);
+    }
+
+
 
 }
