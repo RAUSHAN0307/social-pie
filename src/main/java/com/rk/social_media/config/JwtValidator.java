@@ -16,23 +16,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JwtValidator extends OncePerRequestFilter {
-    @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-            String jwt = request.getHeader(JwtConstant.JWT_HEADER);
-
-            if(jwt != null && JwtProvider.validToken(jwt)){
-                try {
-                    String email = JwtProvider.getEmailFromJwtToken(jwt);
-                    List<GrantedAuthority> authorities = new ArrayList<>();
-                    Authentication authentication = new UsernamePasswordAuthenticationToken(email,null,authorities);
-                    SecurityContextHolder.getContext().setAuthentication(authentication);
-                } catch (Exception e) {
-                    throw new BadCredentialsException("invalid token!");
-                }
-            }
-//            else {
-//                throw new BadCredentialsException("please provide valid token");
+//    @Override
+//    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+//            String jwt = request.getHeader(JwtConstant.JWT_HEADER);
+//
+//            if(jwt != null && JwtProvider.validToken(jwt)){
+//                try {
+//                    String email = JwtProvider.getEmailFromJwtToken(jwt);
+//                    List<GrantedAuthority> authorities = new ArrayList<>();
+//                    Authentication authentication = new UsernamePasswordAuthenticationToken(email,null,authorities);
+//                    SecurityContextHolder.getContext().setAuthentication(authentication);
+//                } catch (Exception e) {
+//                    throw new BadCredentialsException("invalid token!");
+//                }
 //            }
-            filterChain.doFilter(request,response);
+////            else {
+////                throw new BadCredentialsException("please provide valid token");
+////            }
+//            filterChain.doFilter(request,response);
+//    }
+    @Override
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain filterChain)
+            throws ServletException, IOException {
+
+        String authHeader = request.getHeader(JwtConstant.JWT_HEADER);
+
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            String token = authHeader.substring(7); // ✅ Remove "Bearer "
+
+            try {
+                if (JwtProvider.validToken(token)) {
+                    String email = JwtProvider.getEmailFromJwtToken(token);
+                    List<GrantedAuthority> authorities = new ArrayList<>();
+                    Authentication authentication =
+                            new UsernamePasswordAuthenticationToken(email, null, authorities);
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                }
+            } catch (Exception e) {
+                throw new BadCredentialsException("Invalid token!");
+            }
+        }
+
+        filterChain.doFilter(request, response);
     }
+
 }

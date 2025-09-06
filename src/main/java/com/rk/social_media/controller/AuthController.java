@@ -41,9 +41,8 @@ public class AuthController {
 
     @Operation(summary = "Register a new user")
     @PostMapping(value = "/register" , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public AuthResponse CreateUser(@ModelAttribute  RegisterRequest request,
+    public AuthResponse CreateUser(@RequestPart  RegisterRequest request,
                                    @RequestPart(value = "file" , required = false) MultipartFile file) throws Exception {
-
         User isExist = userRepo.findByEmail(request.getEmail());
         if(isExist != null) throw new Exception("email is already registered");
 
@@ -98,3 +97,6 @@ public class AuthController {
 // @RequestPart("user")RegisterRequest request this will take data as json+file
 // if postman :- then use modelAttribute + requestPart
 // here for swagger i am using the requestParam + modelAttribute
+
+//@ModelAttribute  RegisterRequest request,
+//@RequestPart(value = "file" , required = false) MultipartFile file) throws Exception
